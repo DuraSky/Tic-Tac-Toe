@@ -14,21 +14,22 @@ const gameBoard = (function () {
 const gameRules = (function (){
     let playerFlag = true;
     let isGameWon = false;
+    let spacesLeft = 9;
 
     while(isGameWon === false){    
         const getCoordinates = () =>{
             let choiceRow, choiceColumn;
 
-           // while (true) {
+            while (true) {
                 choiceRow = parseInt(prompt("Give row 0-2"));
                 choiceColumn = parseInt(prompt("Give column 0-2"));
         
-                if (
+                if(
                     (choiceRow >= 0 && choiceRow <= 2 && !isNaN(choiceRow)) &&
                     (choiceColumn >= 0 && choiceColumn <= 2 && !isNaN(choiceColumn))
-                ) {
+                ){
                     break; // Break the loop if both row and column values are valid
-                } else {
+                }else{
                     alert("Invalid input. Please enter a number between 0 and 2.");
                 }
             }
@@ -52,9 +53,11 @@ const gameRules = (function (){
                 if(playerFlag === true){                        //if its not populated, push X or O
                     myBoard[choiceRow][choiceColumn] = "O";
                     playerFlag = false;
+                    spacesLeft--;
                 }else if(playerFlag === false){
                     myBoard[choiceRow][choiceColumn] = "X";
                     playerFlag = true;
+                    spacesLeft--;
                 }
         };
             console.log(...myBoard);
@@ -104,6 +107,9 @@ const gameRules = (function (){
             &&boardToCheck[0][2]==="X"
             &&boardToCheck[2][0]==="X"){
                 alert("X won");
+                return isGameWon = true;
+            }else if(spacesLeft === 0){
+                alert("its a tie");
                 return isGameWon = true;
             }
         };
