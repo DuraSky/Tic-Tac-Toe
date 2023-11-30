@@ -1,0 +1,15 @@
+#canvas{
+    width: 50%;
+    border: 1px solid black;
+    height: 400px;
+}
+
+.row{
+    display: flex;
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+}
