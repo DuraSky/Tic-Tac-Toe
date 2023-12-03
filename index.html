@@ -8,6 +8,18 @@
 </head>
 <body>
 
+    <dialog id="playerNames" open>
+        <p>Greetings, one and all!</p>
+        <form>
+            <label for="p1name">Player 1 name:</label>
+            <input type="text" name="p1name" id="p1name" required>
+            <label for="p2name">Player 2 name:</label>
+            <input type="text" name="p2name" id="p2name" required>
+
+            <button formmethod="dialog" type="submit">Cancel</button>        </form>
+        </form>
+    </dialog>
+
     <div id="canvas">
         <div class="row">
             <div class="cell" id="cell00"></div>
@@ -23,6 +35,12 @@
             <div class="cell" id="cell20"></div>
             <div class="cell" id="cell21"></div>
             <div class="cell" id="cell22"></div>
+        </div>
+        <div id="controls">
+            <div id="reset">Reset</div>
+
+            <div id="whosTurnIsIt"></div>
+
         </div>
     </div>
     
