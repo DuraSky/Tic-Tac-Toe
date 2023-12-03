@@ -19,3 +19,17 @@
     height: 100px;
     border: solid 1px black;
 }
+
+.O{
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    background-color: black;
+}
+
+.X{
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    background-color: red;
+}
