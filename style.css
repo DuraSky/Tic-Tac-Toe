@@ -1,3 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+#playerNames::backdrop {
+    background: hsl(187, 38%, 28%);
+} 
+
+#playerNames{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+
+form>label{
+    font-size: 0.9rem;
+}
+
+form>button{
+    background: rgb(76, 141, 240); 
+    border-radius: 5px;
+    border: lightgrey solid 1px;
+    font-size: 0.9rem;
+}
+
+form>button:hover{
+    background: rgb(41, 114, 223);
+}
+
+input[type="text"]{
+    margin-bottom: 15px;
+}
+
 #canvas{
     width: 50%;
     border: 1px solid black;
@@ -20,16 +62,21 @@
     border: solid 1px black;
 }
 
-.O{
+.O, .X{
     width: 100px;
     height: 100px;
     border: solid 1px black;
-    background-color: black;
 }
 
-.X{
-    width: 100px;
-    height: 100px;
-    border: solid 1px black;
-    background-color: red;
+.O:before{
+    content: "O";
+    font-size: 100px;
+    text-align: center;
 }
+
+.X::before{
+    content: "X";
+    font-size: 100px;
+    text-align: center;
+}
+

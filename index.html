@@ -8,15 +8,15 @@
 </head>
 <body>
 
-    <dialog id="playerNames" open>
-        <p>Greetings, one and all!</p>
-        <form id="playerForm">
+    <dialog id="playerNames">
+        <img src="img/icon.png" alt="tictactoeicon" width="64px" height="64px">
+        <form method="dialog" id="playerForm">
             <label for="p1name">Player 1 name:</label>
             <input type="text" name="p1name" id="p1name" required>
             <label for="p2name">Player 2 name:</label>
             <input type="text" name="p2name" id="p2name" required>
 
-            <button formmethod="dialog" type="submit">Cancel</button>        </form>
+            <button formmethod="dialog" type="submit" id="submit">Submit</button>  
         </form>
     </dialog>
 

@@ -82,55 +82,46 @@ const gameRules = (function (){
          if(myBoard[getRowFromID][0]==="O"
           &&myBoard[getRowFromID][1]==="O"
           &&myBoard[getRowFromID][2]==="O"){
-             resetBoard(myBoard);
-             spacesLeft = 9;
-             getWinner("O");
+            getWinner("O"); 
+            spacesLeft = 9; 
          }else if(myBoard[0][getColumnFromID]==="O" // vertical win conditions for O
          &&myBoard[1][getColumnFromID]==="O"
          &&myBoard[2][getColumnFromID]==="O"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("O");
+            spacesLeft = 9;
         }else if(myBoard[1][1]==="O" // diagonal for O
         &&myBoard[0][0]==="O"
         &&myBoard[2][2]==="O"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("O");
+            spacesLeft = 9;
         }else if(myBoard[1][1]==="O" //  diagonal for O
         &&myBoard[0][2]==="O"
         &&myBoard[2][0]==="O"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("O");
+            spacesLeft = 9;
         }else if(myBoard[getRowFromID][0]==="X" 
         &&myBoard[getRowFromID][1]==="X"
         &&myBoard[getRowFromID][2]==="X"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("X");
+            spacesLeft = 9;
         }else if(myBoard[0][getColumnFromID]==="X" 
         &&myBoard[1][getColumnFromID]==="X"
         &&myBoard[2][getColumnFromID]==="X"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("X");
+            spacesLeft = 9;
         }else if(myBoard[1][1]==="X" 
         &&myBoard[0][0]==="X"
         &&myBoard[2][2]==="X"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("X");
+            spacesLeft = 9;
         }else if(myBoard[1][1]==="X"
         &&myBoard[0][2]==="X"
         &&myBoard[2][0]==="X"){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("X");
+            spacesLeft = 9; 
         }else if(spacesLeft === 0){
-            resetBoard(myBoard);
-            spacesLeft = 9;
             getWinner("T");
+            spacesLeft = 9;            
         };
     };
 
@@ -172,6 +163,14 @@ playerNames.addEventListener('submit', function() {
     });      
 })();
 
+(function () {
+    playerNames.showModal();
+})();
+
+function closeModal() {
+    playerNames.close();
+     playerNames.style.display = "none";
+}
 
 
 
