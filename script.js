@@ -165,12 +165,19 @@ playerNames.addEventListener('submit', function() {
 
 (function () {
     playerNames.showModal();
+
 })();
 
 function closeModal() {
-    playerNames.close();
-     playerNames.style.display = "none";
+    let submitBtn = document.getElementById("submitBtn");
+
+
+    submitBtn.addEventListener("click", (event)=>{
+        event.preventDefault();
+        playerNames.close();
+    })
 }
+
 
 
 
