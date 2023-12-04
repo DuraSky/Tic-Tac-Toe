@@ -15,8 +15,11 @@ const gameBoard = (function () {
 const gameRules = (function (){
     let playerFlag = true;
     let spacesLeft = 9;
+    let isGameWon = false;
+
 
     const playTurn = (getColumnFromID, getRowFromID, clickedCell) =>{
+       if(isGameWon === false){ 
         console.log("Column: " + getColumnFromID );
         console.log("Row: " + getRowFromID);
         const myBoard = gameBoard;
@@ -44,23 +47,29 @@ const gameRules = (function (){
         checkBoard(myBoard,getColumnFromID,getRowFromID);
         switchNames(p1name,p2name);
         return myBoard;
+    };
 };
 
+
     const switchNames = function(p1name,p2name){
-        if(playerFlag === true){
-        whosTurnIsIt.innerHTML = `Its ${p1name.value} turn`;
-        }else{
-        whosTurnIsIt.innerHTML = `Its ${p2name.value} turn`;
+        if(playerFlag === true && isGameWon === false){
+        whosTurnIsIt.innerHTML = `Its ${p1name.value}'s turn`;
+        }else if(playerFlag === false && isGameWon === false){
+        whosTurnIsIt.innerHTML = `Its ${p2name.value}'s turn`;
+        }else if(isGameWon === true){
+            whosTurnIsIt.innerHTML = "Game Over"
         }
     };
 
     const getWinner = function(whoWon){
+        let winnerField = document.querySelector("#winner");
+
         if(whoWon === "O"){
-            alert(`${p1name.value} won`)
+           winnerField.innerHTML = `${p1name.value} won!`
         }else if(whoWon === "T"){
-            alert("Its a tie")
+            winnerField.innerHTML = "Its a tie!"
         }else{
-            alert(`${p2name.value} won`)
+            winnerField.innerHTML = `${p2name.value} won!`
         }
     }
 
@@ -71,6 +80,12 @@ const gameRules = (function (){
             }
         }
         playerFlag = true;
+        isGameWon = false;
+        whosTurnIsIt.innerHTML = `Its ${p1name.value}'s turn`;
+
+        let winnerField = document.querySelector("#winner");
+        winnerField.innerHTML = ``;
+
         let removeClasses = document.querySelectorAll(".cell");
         removeClasses.forEach((cell)=>{
             cell.classList.remove("O");
@@ -84,44 +99,53 @@ const gameRules = (function (){
           &&myBoard[getRowFromID][2]==="O"){
             getWinner("O"); 
             spacesLeft = 9; 
+            isGameWon = true;
          }else if(myBoard[0][getColumnFromID]==="O" // vertical win conditions for O
          &&myBoard[1][getColumnFromID]==="O"
          &&myBoard[2][getColumnFromID]==="O"){
             getWinner("O");
             spacesLeft = 9;
+            isGameWon = true;
         }else if(myBoard[1][1]==="O" // diagonal for O
         &&myBoard[0][0]==="O"
         &&myBoard[2][2]==="O"){
             getWinner("O");
             spacesLeft = 9;
+            isGameWon = true;
         }else if(myBoard[1][1]==="O" //  diagonal for O
         &&myBoard[0][2]==="O"
         &&myBoard[2][0]==="O"){
             getWinner("O");
             spacesLeft = 9;
+            isGameWon = true;
         }else if(myBoard[getRowFromID][0]==="X" 
         &&myBoard[getRowFromID][1]==="X"
         &&myBoard[getRowFromID][2]==="X"){
             getWinner("X");
             spacesLeft = 9;
+            isGameWon = true;
         }else if(myBoard[0][getColumnFromID]==="X" 
         &&myBoard[1][getColumnFromID]==="X"
         &&myBoard[2][getColumnFromID]==="X"){
             getWinner("X");
             spacesLeft = 9;
+            isGameWon = true;
         }else if(myBoard[1][1]==="X" 
         &&myBoard[0][0]==="X"
         &&myBoard[2][2]==="X"){
             getWinner("X");
             spacesLeft = 9;
+            isGameWon = true;
         }else if(myBoard[1][1]==="X"
         &&myBoard[0][2]==="X"
         &&myBoard[2][0]==="X"){
             getWinner("X");
             spacesLeft = 9; 
+            isGameWon = true;
         }else if(spacesLeft === 0){
             getWinner("T");
-            spacesLeft = 9;            
+            spacesLeft = 9;   
+            isGameWon = true;         
         };
     };
 
@@ -159,6 +183,8 @@ playerNames.addEventListener('submit', function() {
     console.log(p1name)
     
     let p2name = document.getElementById('p2name').value;
+    whosTurnIsIt.innerHTML = `Its ${p1name}'s turn`;
+
     return {p1name,p2name};
     });      
 })();
